@@ -2,7 +2,10 @@ return {
   { 'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
+      local parser_path = '~/.local/share/treesitter-parsers'
+      vim.opt.runtimepath:append(parser_path)
       require 'nvim-treesitter.configs'.setup {
+        parser_install_dir = parser_path,
         ensure_installed = { 'r', 'python', 'markdown', 'markdown_inline', 'julia', 'yaml', 'lua', 'vim', 'query', 'help',
           'latex' },
         highlight = {
